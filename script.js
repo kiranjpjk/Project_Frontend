@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   let roomCode = "";
-  let username = "";
+  let username = "User" + Math.floor(Math.random() * 1000);
 
   // DOM ELEMENTS
   const roomScreen = document.getElementById("room-screen");
@@ -23,33 +23,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // ENTER ROOM
   enterBtn.addEventListener("click", () => {
-
-    username = document.getElementById("username").value.trim();
     roomCode = document.getElementById("room-code").value.trim();
-
-    if (!username) {
-      alert("Please enter your name");
-      return;
-    }
+    let mode = document.querySelector("input[name='mode']:checked").value;
 
     if (!roomCode) {
       alert("Room code cannot be empty");
       return;
     }
 
-    let mode = document.querySelector("input[name='mode']:checked").value;
-
     if (mode === "create") {
-      socket.emit("create_room", { room: roomCode, user: username });
+      socket.emit("create_room", roomCode);
     } else {
-      socket.emit("join_room", { room: roomCode, user: username });
+      socket.emit("join_room", roomCode);
     }
 
-    // Hide room box, show chat UI
     roomScreen.classList.add("hidden");
     appContainer.classList.remove("hidden");
 
-    addSystemMessage(`[CONNECTED AS ${username} TO ROOM: ${roomCode}]`);
+    addSystemMessage(`[CONNECTED TO ROOM: ${roomCode}]`);
   });
 
   // RECEIVE CHAT MESSAGE
@@ -57,10 +48,9 @@ window.addEventListener("DOMContentLoaded", () => {
     appendMessage(`${data.user}: ${data.message}`);
   });
 
-  // SEND CHAT ON ENTER
+  // SEND MESSAGE
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-
       let msg = input.value.trim();
       if (msg.length > 0) {
         socket.emit("chat_message", {
