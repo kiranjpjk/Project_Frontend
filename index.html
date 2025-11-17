@@ -13,12 +13,16 @@
 <div id="room-screen">
     <div id="room-box">
         <h2>ENTER STAR-C2</h2>
+
+        <!-- NEW: USERNAME FIELD -->
+        <label for="username"></label><input type="text" id="username" placeholder="Enter your name" />
+
         <div class="toggle">
             <label><input type="radio" name="mode" value="join" checked> Join Existing Room</label>
             <label><input type="radio" name="mode" value="create"> Create New Room</label>
         </div>
 
-        <input type="text" id="room-code" placeholder="Enter room code" />
+        <label for="room-code"></label><input type="text" id="room-code" placeholder="Enter room code" />
         <button id="enter-btn">ENTER</button>
     </div>
 </div>
@@ -29,7 +33,7 @@
         <div id="messages"></div>
         <div id="input-line">
             <span class="prompt">></span>
-            <input id="input" autocomplete="off" autofocus />
+            <label for="input"></label><input id="input" autocomplete="off" autofocus />
         </div>
     </div>
 
