@@ -1,6 +1,5 @@
 // Wait for DOM so elements exist
 window.addEventListener("DOMContentLoaded", () => {
-  // IMPORTANT: use HTTPS origin (Socket.IO handles WebSocket internally)
   const socket = io("https://overflowing-mindfulness-production.up.railway.app", {
     transports: ["websocket"]
   });
@@ -16,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const usersList = document.getElementById("users");
   const enterBtn = document.getElementById("enter-btn");
 
-  // DEBUG: show connection events in console
+  // DEBUG LOGS
   socket.on("connect", () => console.log("socket connected", socket.id));
   socket.on("connect_error", (err) => console.error("connect_error", err));
   socket.on("error", (err) => console.error("socket error", err));
