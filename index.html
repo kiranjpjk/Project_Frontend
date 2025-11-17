@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>STAR-C2 Terminal Chat</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <canvas id="matrix"></canvas>
@@ -13,20 +13,12 @@
 <div id="room-screen">
     <div id="room-box">
         <h2>ENTER STAR-C2</h2>
-
         <div class="toggle">
-            <label>
-                <input type="radio" name="mode" value="join" checked>
-                Join Existing Room
-            </label>
-            <label>
-                <input type="radio" name="mode" value="create">
-                Create New Room
-            </label>
+            <label><input type="radio" name="mode" value="join" checked> Join Existing Room</label>
+            <label><input type="radio" name="mode" value="create"> Create New Room</label>
         </div>
 
-        <label for="room-code"></label><input type="text" id="room-code" placeholder="Enter room code">
-
+        <input type="text" id="room-code" placeholder="Enter room code" />
         <button id="enter-btn">ENTER</button>
     </div>
 </div>
@@ -35,10 +27,9 @@
 <div id="app-container" class="hidden">
     <div id="terminal">
         <div id="messages"></div>
-
         <div id="input-line">
             <span class="prompt">></span>
-            <label for="input"></label><input id="input" autocomplete="off" autofocus />
+            <input id="input" autocomplete="off" autofocus />
         </div>
     </div>
 
@@ -48,8 +39,9 @@
     </div>
 </div>
 
+<!-- load socket.io client FIRST, then matrix, then our app script -->
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 <script src="matrix.js"></script>
 <script src="script.js"></script>
-<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 </body>
 </html>

@@ -1,92 +1,102 @@
-html, body {
+* {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    box-sizing: border-box;
     font-family: monospace;
+}
+
+body {
     background: black;
-    color: #00ff99;
+    overflow: hidden;
 }
 
-.hidden {
-    display: none;
-}
-
+/* Matrix Rain Canvas */
 #matrix {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     z-index: -1;
+    opacity: 0.55;   /* Medium contrast */
 }
 
-/* ROOM SCREEN */
+/* Center room-screen */
 #room-screen {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(4px);
 }
 
 #room-box {
-    background: rgba(0, 20, 0, 0.7);
-    padding: 30px;
-    border: 1px solid #00ff99;
-    box-shadow: 0 0 10px #00ff99;
-    width: 300px;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid #00ff00;
+    padding: 25px;
+    width: 350px;
+    border-radius: 10px;
     text-align: center;
+    color: #00ff00;
+    box-shadow: 0 0 20px #00ff00;
 }
 
-#room-box h2 {
-    margin-bottom: 20px;
+#room-box input[type=text] {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .toggle {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-#room-code {
-    width: 100%;
-    padding: 10px;
-    background: black;
-    color: #00ff99;
-    border: 1px solid #00ff99;
-    outline: none;
-    text-align: center;
+.toggle label {
+    cursor: pointer;
 }
 
 #enter-btn {
     width: 100%;
-    margin-top: 15px;
     padding: 10px;
-    background: #002200;
-    color: #00ff99;
-    border: 1px solid #00ff99;
+    background: #00ff00;
+    border: none;
+    color: black;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* MAIN UI */
+/* MAIN APP */
+.hidden {
+    display: none;
+}
+
 #app-container {
     display: flex;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 
 #terminal {
     flex: 3;
     padding: 20px;
+    color: #00ff00;
+    overflow-y: auto;
 }
 
 #messages {
     height: 90%;
     overflow-y: auto;
-    white-space: pre-wrap;
+    margin-bottom: 10px;
 }
 
 #input-line {
@@ -94,29 +104,24 @@ html, body {
     align-items: center;
 }
 
+.prompt {
+    color: #00ff00;
+    margin-right: 5px;
+}
+
 #input {
     flex: 1;
-    background: transparent;
-    color: #00ff99;
+    background: black;
     border: none;
     outline: none;
+    color: #00ff00;
     font-size: 16px;
 }
 
-/* SIDEBAR */
 #sidebar {
-    width: 250px;
-    border-left: 1px solid #00ff99;
-    padding: 20px;
-    background: rgba(0, 10, 0, 0.5);
-}
-
-#sidebar h3 {
-    margin-top: 0;
-}
-
-#users {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.6);
+    border-left: 1px solid #00ff00;
+    padding: 15px;
+    color: #00ff00;
 }
