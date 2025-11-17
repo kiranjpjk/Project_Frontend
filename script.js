@@ -15,6 +15,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const usersList = document.getElementById("users");
   const enterBtn = document.getElementById("enter-btn");
 
+  // Ensure messages container is visible
+  messagesDiv.style.display = "block";
+  messagesDiv.style.visibility = "visible";
+
   // DEBUG LOGS
   socket.on("connect", () => console.log("socket connected", socket.id));
   socket.on("connect_error", (err) => console.error("connect_error", err));
